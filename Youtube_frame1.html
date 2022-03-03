@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,user-scalable=no">
+<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+  <meta name="HandheldFriendly" content="true">
+
+  <meta charset="utf-8">
+  <meta content="width=device-width, initial-scale=1.0" name="viewport">
+
+  <title>Germany Videos</title>
+  <meta content="" name="description">
+  <meta content="" name="keywords">
+	<style>
+	* {
+		-webkit-box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		-ms-box-sizing: border-box;
+		-o-box-sizing: border-box;
+		box-sizing: border-box;
+		margin:0;
+		padding:0;
+	}
+	html {
+		font-size: 16px;
+		background-color:#000;
+	}
+	body {
+		font-family: Arial, sans-serif;
+		color: #fff;
+		max-width:600px;
+		margin:10px auto;
+	}
+	/* Additionnal styles */
+	.video-slider {
+		width: 100%;
+		height: 20em;
+		background: #444;
+		position: relative;
+		overflow: hidden;
+	}
+	.slide {
+		position: absolute;
+		top: 0;
+		left: 100%;
+		height: 100%;
+		width: 100%;
+		text-align: center;
+		overflow: hidden;
+	}
+	.slide:first-child{
+		left: 0;
+	}
+	.video{
+		height: 100%;
+		width: 100%;
+		border:0;
+	}
+	.slide-arrow{
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 45%;
+		width: 15%;
+		cursor: pointer;
+		opacity: .2;
+	}
+	.slide-arrow:hover{
+		opacity: 1;
+	}
+	.slide-arrow:after{
+		content: "\003c";
+		text-align: center;
+		display: block;
+		height: 10%;
+		width: 100%;
+		position: absolute;
+		bottom: 0;
+		left: 0;
+		font-size: 3em;
+	}
+	.slide-arrow.right:after{
+		content: "\003e";
+	}
+	.slide-arrow.right{
+		left: auto;
+		right: 0;
+	}
+	</style>
+	<script src="https://code.jquery.com/jquery-3.3.1.min.js"></script>
+	<script src="https://www.youtube.com/iframe_api"></script>
+	<script>
+	$(document).ready(function () {
+		var pos = 0,
+			slides = $('.slide'),
+			numOfSlides = slides.length;
+
+		function nextSlide() {
+			// `[]` returns a vanilla DOM object from a jQuery object/collection
+			slides[pos].video.stopVideo()
+			slides.eq(pos).animate({ left: '-100%' }, 500);
+			pos = (pos >= numOfSlides - 1 ? 0 : ++pos);
+			slides.eq(pos).css({ left: '100%' }).animate({ left: 0 }, 500);
+		}
+
+		function previousSlide() {
+			slides[pos].video.stopVideo()
+			slides.eq(pos).animate({ left: '100%' }, 500);
+			pos = (pos == 0 ? numOfSlides - 1 : --pos);
+			slides.eq(pos).css({ left: '-100%' }).animate({ left: 0 }, 500);
+		}
+
+		$('.left').click(previousSlide);
+		$('.right').click(nextSlide);
+	})
+
+	function onYouTubeIframeAPIReady() {
+		$('.slide').each(function (index, slide) {
+			// Get the `.video` element inside each `.slide`
+			var iframe = $(slide).find('.video')[0]
+			// Create a new YT.Player from the iFrame, and store it on the `.slide` DOM object
+			slide.video = new YT.Player(iframe)
+		})
+	}
+	</script>
+</head>
+<body>
+	<div class="video-slider">
+		<!-- SLIDE 1 -->
+		<div class="slide">
+			<iframe class="video" src="https://www.youtube.com/embed/YE7VzlLtp-4?ecver=2&enablejsapi=1"></iframe>
+		</div>
+		<!-- SLIDE 3 -->
+
+		<div class="slide">
+			<iframe class="video" src="https://www.youtube.com/embed/nwt7OuFGDZ8?ecver=2&enablejsapi=1"></iframe>
+		</div>
+
+		<!-- END OF SLIDES -->
+		<div class="slide-arrow left"></div>
+		<div class="slide-arrow right"></div>
+	</div>
+</body>
+
+
+
+<iframe width="560" height="315"
+src="https://www.youtube.com/embed/videoseries?list=PLdR3sGuTt6GWE38GX1zeLQ9J-G7EXcS-I"
+title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media;
+gyroscope; picture-in-picture" allowfullscreen></iframe>
+----------------/CSS/-----------------
+<link rel="stylesheet" type="text/css" href="slick/slick.css"/>
+// Add the new slick-theme.css if you want the default styling
+<link rel="stylesheet" type="text/css" href="slick/slick-theme.css"/>
+
+
+
+<div data-slick='{"slidesToShow": 4, "slidesToScroll": 4}'>
+  <div><h3>1</h3></div>
+  <div><h3>2</h3></div>
+  <div><h3>3</h3></div>
+  <div><h3>4</h3></div>
+  <div><h3>5</h3></div>
+  <div><h3>6</h3></div>
+</div>
+<script type="text/javascript" src="//code.jquery.com/jquery-1.11.0.min.js"></script>
+<script type="text/javascript" src="//code.jquery.com/jquery-migrate-1.2.1.min.js"></script>
+<script type="text/javascript" src="slick/slick.min.js"></script>
+
+$(document).ready(function(){
+  $('.your-class').slick({
+    setting-name: setting-value
+  });
+});
